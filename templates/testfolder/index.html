@@ -1,12 +1,12 @@
 {% extends "base_template" %}
 {% block title %}
-Simple CRM | Home Page
+    Simple CRM | Home Page
 {% endblock title %}
 
 {% block breadcrumbs %}
-<ol class="inline-flex items-center space-x-1 md:space-x-3">
-    <li class="">Dashboard</li>
-</ol>
+    <ol class="inline-flex items-center space-x-1 md:space-x-3">
+        <li class="">Dashboard</li>
+    </ol>
 {% endblock breadcrumbs %}
 
 {% block canvas %}
@@ -29,6 +29,7 @@ Simple CRM | Home Page
         </div>
     </div>
     <div class="row">
+        <!-- this to be modified with a for loop and and empty result set object -->
         {% if object_list %}
         <table class="table table-hover">
             <thead>
@@ -40,14 +41,15 @@ Simple CRM | Home Page
             </thead>
             <tbody>
                 {% for client in object_list %}
-                <tr class="hover" hx-get="{{ client.get_absolute_url }}" hx-target="#htmxCanvas" hx-push-url="true">
-                    <th scope="row">{{client.id }}</th>
-                    <td>{{ client.name }}</td>
-                    <td>{{ client.email }}</td>
-                </tr>
+                    <tr class="hover" hx-get="{{ client.get_absolute_url }}" hx-target="#htmxCanvas" hx-push-url="true">
+                        <th scope="row">{{client.id }}</th>
+                        <td>{{ client.name }}</td>
+                        <td>{{ client.email }}</td>
+                    </tr>
                 {% endfor %}
             </tbody>
         </table>
+        <!-- empty result set object goes here  -->
         {% else %} There are no clients. {% endif %}
     </div>
 </section>
