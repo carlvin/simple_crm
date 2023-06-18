@@ -39,7 +39,8 @@ class SearchResultView(ListView):
                 | Q(address__icontains=query)
                 | Q(email__icontains=query)
             )
-        
+        else:
+            results = Client.objects.all()
 
         return results
 
